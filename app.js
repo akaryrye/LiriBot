@@ -31,8 +31,7 @@ function displayPrompt() {
          {
             type: "input",
             name: "name",
-            message: "Enter name: ",
-            default: "I want it that way"
+            message: "Enter name: "
          }
       ])
       .then(function(input) {
@@ -129,7 +128,6 @@ function getArtist(name) {
          console.error(err);
       }
 
-      console.log(data);
       // loop through results, format, and display
       for (let i = 0; i < data.artists.items.length; i++) {
          console.log(`${i}-------------\n
@@ -160,7 +158,6 @@ function getConcerts(name) {
       //loop through returned concerts
       for (let i = 0; i < res.data.length; i++) {
          let date = moment(res.data[i].datetime).format("lll");
-         console.log(date);
          console.log(`${date}
             Lineup: ${res.data[i].lineup}
             Location: ${res.data[i].venue.city}, ${res.data[i].venue.country}
