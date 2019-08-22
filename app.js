@@ -56,8 +56,9 @@ function displayPrompt() {
 function getRandom() {
    let random = "";
    fs.readFile("random.txt", "utf8", function(err, data) {
-      let data = data.split(",");
-      random = data[1];
+      let parsed = data.split(",");
+      random = parsed[1];
+      console.log(random);
       if (err) {
          return console.log(err);
       }
@@ -144,10 +145,12 @@ function getArtist(name) {
 
 // Receive and format information from "TheBandsInTown" API
 function getConcerts(name) {
+   // get key from .env
    let apiKey = keys.apiKeys.bitKey;
-   console.log(apiKey);
+
    // format name for URL
-   urlname = name.split("%20").join(" ");
+   urlname = name.split(" ").join("%20");
+   console.log(urlname);
    const URL = `https://rest.bandsintown.com/artists/${urlname}/events?app_id=${apiKey}`;
 
    // display a heading
